@@ -8,14 +8,20 @@ public class LogEvent {
     private final LogLevel level;
     private final String namespace;
     private final LocalDateTime timestamp;
+    private final String trackingId;
+    private final String instanceId;
 
     public LogEvent(String content, LogLevel level,
-                    String namespace, LocalDateTime timestamp) {
+                    String namespace, LocalDateTime timestamp, String trackingId, String instanceId) {
         this.content = content;
         this.level = level;
         this.namespace = namespace;
         this.timestamp = timestamp;
+        this.trackingId = trackingId;
+        this.instanceId = instanceId;
+
     }
+
 
     public String getContent() {
         return content;
@@ -31,5 +37,13 @@ public class LogEvent {
 
     public LocalDateTime getTimestamp() {
         return timestamp;
+    }
+
+    public String getTrackingId() {
+        return trackingId;
+    }
+
+    public String getInstanceId() {
+        return instanceId;
     }
 }

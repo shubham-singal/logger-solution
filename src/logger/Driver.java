@@ -23,9 +23,9 @@ public class Driver {
         sinks.put(LogLevel.WARN, fileSink);
         sinks.put(LogLevel.ERROR, fileSink);
 
-        Logger logger = new Logger(sinks);
-        logger.log("Transaction completed", LogLevel.INFO, "transaction-service");
-        logger.log("User not found", LogLevel.WARN, "user-service");
-        logger.log("Payment failed", LogLevel.ERROR, "payment-service");
+        Logger logger = new Logger(sinks, "ec2-01");
+        logger.log("Transaction completed", LogLevel.INFO, "transaction-service", "123");
+        logger.log("User not found", LogLevel.WARN, "user-service", "456");
+        logger.log("Payment failed", LogLevel.ERROR, "payment-service", "789");
     }
 }

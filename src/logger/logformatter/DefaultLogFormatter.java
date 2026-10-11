@@ -13,7 +13,13 @@ public class DefaultLogFormatter implements LogFormatter {
 
     @Override
     public String format(LogEvent event) {
-        return new StringBuilder().append(event.getLevel()).append(" [").append(event.getTimestamp().format(formatter)).append("] [").append(event.getNamespace())
+        String trackingId;
+        if(event.getTrackingId() == null || event.getTrackingId().isBlank()) {
+            trackingId = "[]";
+        } else {
+            trackingId = "[ " + event.getTrackingId() + " ]";
+        }
+        return new StringBuilder().append(event.getInstanceId()).append(trackingId).append(event.getLevel()).append(" [").append(event.getTimestamp().format(formatter)).append("] [").append(event.getNamespace())
                 .append("] ").append(event.getContent()).toString();
     }
 }
